@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>FORCE PASS QR V2.0</title>
-  <style>
-    body {
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px 15px;
-    }
-    h1 { color: #ff7900; }
-    .card {
-      max-width: 420px;
-      margin: 30px auto;
-      padding: 25px;
-      border: 2px solid #ff7900;
-      border-radius: 16px;
-    }
-    .status { color: #ff7900; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FORCE PASS QR V2.0</title>
+
+<style>
+body {
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px 15px;
+}
+.card {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 2px solid #ff7900;
+  border-radius: 16px;
+}
+h1 { color: #ff7900; }
+.status { color: #ff7900; }
+.player-id {
+  font-size: 22px;
+  font-weight: bold;
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>ELEVENZ FORCE FC</h1>
-    <h2>FORCE PASS QR V2.0</h2>
-    <p id="player"></p>
-    <p class="status">PROTOTYPE MODE</p>
-    <p>Dynamic QR System</p>
-    <p>FORCECORE COMMAND LABS</p>
-  </div>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const id = params.get("id");
+<div class="card">
+  <h1>ELEVENZ FORCE FC</h1>
+  <h2>FORCE PASS QR V2.0</h2>
 
-    const testPlayers = {
-      "TEST-001": "DUMMY PLAYER 001"
-    };
+  <p id="player">Checking Player ID...</p>
+  <p id="playerId" class="player-id"></p>
 
-    document.getElementById("player").textContent =
-      Object.hasOwn(testPlayers, id)
-        ? "TEST PLAYER: " + testPlayers[id]
-        : "INVALID TEST PLAYER";
-  </script>
+  <p class="status">PROTOTYPE MODE</p>
+  <p>Dynamic Player ID Recognition</p>
+  <p>FORCECORE COMMAND LABS</p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const player = document.getElementById("player");
+const playerId = document.getElementById("playerId");
+
+if (id === "TEST-001") {
+  player.textContent = "TEST PLAYER: DUMMY PLAYER 001";
+  playerId.textContent = "PLAYER ID: TEST-001";
+} else {
+  player.textContent = "TEST PLAYER NOT RECOGNIZED";
+  playerId.textContent = "INVALID TEST ID";
+}
+</script>
+
 </body>
 </html>
