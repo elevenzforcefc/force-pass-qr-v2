@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FORCE PASS QR V2.1</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 30px 15px;
+  background: #111;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.pass {
+  max-width: 380px;
+  margin: auto;
+  padding: 30px 20px;
+  background: white;
+  border: 5px solid #ff7900;
+  border-radius: 22px;
+  color: #111;
+  box-shadow: 0 0 0 3px #333;
+}
+
+.club {
+  color: #ff7900;
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.subtitle {
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+#qrcode {
+  margin: 25px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#qrcode img {
+  max-width: 100%;
+}
+
+.id {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff7900;
+}
+
+.footer {
+  font-size: 11px;
+  margin-top: 25px;
+  color: #555;
+}
+
+.warning {
+  color: #ff7900;
+  font-size: 12px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="pass">
+
+  <div class="club">ELEVENZ FORCE FC</div>
+
+  <div class="title">FORCE PASS</div>
+  <div class="subtitle">PLAYER ID</div>
+
+  <div id="qrcode"></div>
+
+  <div class="id">TEST-001</div>
+
+  <div class="footer">
+    FORCECORE COMMAND LABS<br>
+    ONE CLUB ONE FORCE
+  </div>
+
+</div>
+
+<div class="warning">
+  PROTOTYPE MODE | DUMMY DATA ONLY
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+const target =
+  "https://elevenzforcefc.github.io/force-pass-qr-v2/?id=TEST-001";
+
+if (typeof QRCode !== "undefined") {
+  new QRCode(document.getElementById("qrcode"), {
+    text: target,
+    width: 220,
+    height: 220,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+} else {
+  document.getElementById("qrcode").textContent =
+    "QR library unavailable. Check internet connection.";
+}
+</script>
+
+</body>
+</html>
